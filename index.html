@@ -1,185 +1,1407 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clément Malgonne - Profil</title>
+    <title>Portfolio - Clément Malgonne</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+        /* ==================== RESET & VARIABLES ==================== */
+        :root {
+            --color-dark-bg: #050505;
+            --color-light-bg: #F7F7F7;
+            --color-white: #FFFFFF;
+            --color-accent-start: #127749;
+            --color-accent-end: #164A3D;
+            --color-text-light: #F5F5F5;
+            --color-text-dark: #164A3D;
+            --color-text-body: #333333;
+
+            --font-main: 'Poppins', sans-serif;
+            --font-title: 'Playfair Display', serif;
+
+            --border-radius-card: 20px;
+            --border-radius-btn: 50px;
+
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.1);
+            --glow-accent: 0 4px 20px rgba(18,119,73);
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            color: #333;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        section {
-            margin: 20px;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            color: #4CAF50;
-        }
-        ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        li {
-            margin: 10px 0;
-        }
-        .skills, .interests {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .skills div, .interests div {
-            flex: 1 0 30%;
-            padding: 10px;
             box-sizing: border-box;
         }
-        .quote {
-            font-style: italic;
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--color-text-body);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* ==================== UTILITIES ==================== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center {
             text-align: center;
-            color: #777;
+        }
+
+        .title-serif {
+            font-family: var(--font-title);
+            font-weight: 700;
+        }
+
+        .text-accent {
+            color: var(--color-accent-start);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: var(--border-radius-btn);
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-accent-start), var(--color-accent-end));
+            color: white;
+            box-shadow: var(--glow-accent);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(18,119,73);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--color-accent-start);
+            color: var(--color-text-light);
+        }
+
+        .btn-outline:hover {
+            background: var(--color-accent-start);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--color-text-dark);
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            color: #666;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        /* ==================== HEADER ==================== */
+        header {
+            background-color: var(--color-dark-bg);
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            font-family: var(--font-title);
+        }
+
+        .logo span {
+            color: var(--color-accent-start);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent-start);
+        }
+
+        .btn-contact-nav {
+            padding: 8px 20px;
+            font-size: 0.85rem;
+        }
+
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        #accueil {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6),
+                    rgba(0, 0, 0, 0.8)),
+                url('/fondGolf.jpg');
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            color: var(--color-text-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-text h3 {
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-bottom: 15px;
+            opacity: 0.9;
+            letter-spacing: 1px;
+            color: #ccc;
+        }
+
+        .hero-text h1 {
+            font-size: 3.2rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            opacity: 0.85;
+            margin-bottom: 30px;
+            max-width: 550px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .blob-shape {
+            width: 100%;
+            max-width: 450px;
+            aspect-ratio: 1/1;
+            background-image: url('/faune.JPG');
+            background-size: cover;
+            background-position: center;
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            border: 4px solid rgba(18,119,73);
+            box-shadow: 0 0 50px rgba(255, 122, 0, 0.15);
+            animation: blob-bounce 8s infinite ease-in-out;
+            transition: border-radius 1s ease;
+        }
+
+        @keyframes blob-bounce {
+            0% {
+                border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            }
+
+            50% {
+                border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+            }
+
+            100% {
+                border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            }
+        }
+
+        /* ==================== A PROPOS ==================== */
+        #apropos {
+            background-color: var(--color-light-bg);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .about-main p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .anecdote-card {
+            background: white;
+            padding: 25px;
+            border-left: 4px solid var(--color-accent-start);
+            border-radius: 0 10px 10px 0;
+            box-shadow: var(--shadow-soft);
             margin-top: 30px;
         }
-        img {
-            width: 100%;
-            max-width: 400px;
-            height: auto;
+
+        .anecdote-card h4 {
+            color: var(--color-text-dark);
+            margin-bottom: 10px;
+            font-family: var(--font-title);
+        }
+
+        .anecdote-card p {
+            font-style: italic;
+            margin-bottom: 0;
+        }
+
+        .about-sidebar {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius-card);
+            box-shadow: var(--shadow-soft);
+            height: fit-content;
+        }
+
+        .about-sidebar h3 {
+            font-family: var(--font-title);
+            color: var(--color-text-dark);
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .info-list li {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .info-list strong {
+            color: var(--color-accent-start);
             display: block;
-            margin: 20px 0;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ==================== QUALITES ==================== */
+        #qualites {
+            background-color: var(--color-white);
+        }
+
+        .qualities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .quality-card {
+            background: #FAFAFA;
+            padding: 30px;
+            border-radius: var(--border-radius-card);
+            box-shadow: var(--shadow-soft);
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .quality-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .quality-card h3 {
+            font-family: var(--font-title);
+            color: var(--color-text-dark);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .quality-text {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .quality-source {
+            font-size: 0.85rem;
+            color: #999;
+            font-style: italic;
+            text-align: right;
+            display: block;
+        }
+
+        /* ==================== VALEURS ==================== */
+        #valeurs {
+            background-color: var(--color-light-bg);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .value-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: var(--border-radius-card);
+            border: 1px solid rgba(22, 74, 61, 0.1);
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .value-card:hover {
+            border-color: var(--color-accent-start);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .value-card h3 {
+            font-family: var(--font-title);
+            color: var(--color-text-dark);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .value-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* ==================== PARCOURS ==================== */
+        #parcours {
+            background-color: var(--color-white);
+        }
+
+        .parcours-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .parcours-col h3 {
+            font-family: var(--font-title);
+            color: var(--color-accent-start);
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        .exp-card {
+            background: #fff;
+            border-left: 3px solid var(--color-text-dark);
+            padding: 20px 20px 20px 30px;
+            margin-bottom: 30px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        .exp-card::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 20px;
+            width: 15px;
+            height: 15px;
+            background: var(--color-accent-start);
+            border-radius: 50%;
+        }
+
+        .exp-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .exp-card .place {
+            font-weight: 600;
+            color: var(--color-text-dark);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .exp-card p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .realisation-card {
+            background: linear-gradient(135deg, #164A3D, #0F352B);
+            color: white;
+            padding: 30px;
+            border-radius: var(--border-radius-card);
+            margin-top: 40px;
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .realisation-icon {
+            font-size: 3rem;
+        }
+
+        .realisation-content h4 {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--color-accent-start);
+        }
+
+        /* ==================== COMPETENCES ==================== */
+        #competences {
+            background-color: var(--color-light-bg);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius-card);
+            box-shadow: var(--shadow-soft);
+            text-align: center;
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--color-text-dark);
+        }
+
+        .skill-category h3 {
+            font-family: var(--font-title);
+            margin-bottom: 20px;
+            color: var(--color-text-dark);
+        }
+
+        .skill-list {
+            text-align: left;
+            padding-left: 10px;
+        }
+
+        .skill-list li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+            color: #555;
+        }
+
+        .skill-list li::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent-start);
+            font-weight: bold;
+        }
+
+        /* ==================== PASSIONS ==================== */
+        #passions {
+            background-color: var(--color-white);
+        }
+
+        .passions-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .passion-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: 0.3s;
+            position: relative;
+            height: 250px;
+        }
+
+        .passion-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .passion-card.highlight {
+            grid-column: span 2;
+            border: 3px solid var(--color-accent-start);
+        }
+
+        .passion-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .passion-card:hover .passion-img {
+            transform: scale(1.1);
+        }
+
+        .passion-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 20px;
+            color: white;
+        }
+
+        .passion-title {
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* ==================== OBJECTIFS ==================== */
+        #objectifs {
+            background-color: var(--color-light-bg);
+        }
+
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .obj-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius-card);
+            box-shadow: var(--shadow-soft);
+            border-top: 5px solid var(--color-text-dark);
+        }
+
+        .obj-card h3 {
+            font-family: var(--font-title);
+            color: var(--color-text-dark);
+            margin-bottom: 15px;
+        }
+
+        .obj-card ul {
+            list-style: disc;
+            padding-left: 20px;
+            color: #555;
+        }
+
+        .obj-card ul li {
+            margin-bottom: 10px;
+        }
+
+        .inspiration-block {
+            text-align: center;
+            background: #fff;
+            padding: 40px;
+            border-radius: var(--border-radius-card);
+            box-shadow: var(--shadow-soft);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .inspiration-quote {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--color-text-dark);
+            margin-bottom: 20px;
+        }
+
+        .batman-symbol {
+            font-size: 3rem;
+            color: var(--color-accent-start);
+            margin-bottom: 15px;
+        }
+
+        /* ==================== CONTACT ==================== */
+        #contact {
+            position: relative;
+            color: white;
+            padding: 80px 0;
+            overflow: hidden;
+        }
+
+        #contact::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                url('/footer.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.35);
+            z-index: -1;
+        }
+
+        .contact-infos {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(6px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 0 35px rgba(255, 122, 0, 0.4);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-card h3 {
+            font-family: var(--font-title);
+            margin-bottom: 10px;
+        }
+
+        .contact-card p,
+        .contact-card a {
+            color: #eee;
+            font-size: 1rem;
+        }
+
+        .contact-card a:hover {
+            color: var(--color-accent-start);
+        }
+
+        @media (max-width: 900px) {
+            .contact-infos {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .contact-infos {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            background-color: #0F0F0F;
+            border: 1px solid #333;
+            border-radius: 10px;
+            color: white;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-accent-start);
+            box-shadow: 0 0 10px rgba(255, 122, 0, 0.2);
+        }
+
+        textarea.form-control {
+            height: 100%;
+            resize: none;
+            min-height: 200px;
+        }
+
+        .contact-col-right {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .joke-text {
+            grid-column: span 2;
+            text-align: center;
+            color: #aaa;
+            font-style: italic;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            justify-self: center;
+        }
+
+        .btn-submit {
+            grid-column: span 2;
+            width: 100%;
+            max-width: 300px;
+            justify-self: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            background: #127749;
+            color: #fff;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+            border-top: 1px solid #111;
+        }
+
+        footer a {
+            color: var(--color-accent-start);
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 1024px) {
+            .nav-links {
+                display: none;
+            }
+
+            .burger {
+                display: block;
+            }
+
+            .nav-links.nav-active {
+                display: flex;
+                position: absolute;
+                right: 0;
+                height: 92vh;
+                top: 8vh;
+                background-color: var(--color-dark-bg);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                transform: translateX(0%);
+                z-index: 999;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text p {
+                margin: 0 auto 30px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-image {
+                margin-top: 50px;
+            }
+
+            .about-grid,
+            .parcours-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .passions-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .passion-card.highlight {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .qualities-grid,
+            .values-grid,
+            .skills-grid,
+            .objectives-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .realisation-card {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
+
 <body>
 
-<header>
-    <h1>Clément Malgonne</h1>
-    <p>Étudiant en Licence Commercialisation des Produits et Services Sportifs</p>
-</header>
+    <!-- ==================== HEADER ==================== -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    Clément <span>Malgonne</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#apropos">À propos</a></li>
+                    <li><a href="#qualities">Qualités</a></li>
+                    <li><a href="#valeurs">Valeurs</a></li>
+                    <li><a href="#parcours">Parcours</a></li>
+                    <li><a href="#competences">Compétences</a></li>
+                    <li><a href="#passions">Passions</a></li>
+                    <li><a href="#objectifs">Objectifs</a></li>
+                    <li><a href="#contact" class="btn btn-primary btn-contact-nav">Contactez-moi</a></li>
+                </ul>
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-<section>
-    <h2>Présentation</h2>
-    <p>Bonjour, je m'appelle Clément Malgonne, j'ai 20 ans et je suis étudiant en licence Commercialisation des Produits et Services Sportifs à l'ILPES. Je pratique le golf depuis l'âge de 5 ans et j'ai également pratiqué le judo et le handball.</p>
-    <img src="https://images.ctfassets.net/56u5qdsjym8c/6r21Rq3lVV057ySsVC2rjb/465257c0a91d9384c1b4bc4ca2779387/Pebble_Beach_Difficult_Courses_4x5.jpg?fl=progressive&q=80" >
-</section>
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="accueil">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h3>ÉTUDIANT EN COMMERCE DU SPORT & PASSIONNÉ DE GOLF</h3>
+                    <h1 class="title-serif">Découvrez, Explorez & <span class="text-accent">Appréciez</span><br>mon
+                        parcours</h1>
+                    <p>
+                        J'ai 20 ans et je suis étudiant en licence professionnelle Commercialisation des produits &
+                        services sportifs à l’ILEPS.
+                        Passionné de golf depuis l'âge de 5 ans, j'ai également pratiqué le judo et le handball.
+                        Sérieux, impliqué et dynamique, je suis résolument tourné vers la relation client et le
+                        commerce.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">Me contacter</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="blob-shape"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section>
-    <h2>Mes Qualités</h2>
-    <ul>
-        <li>Bon vivant</li>
-        <li>Persévérant</li>
-        <li>Dynamique</li>
-    </ul>
-    <img src="https://example.com/quality-image.jpg" alt="Qualité image">
-</section>
+    <!-- ==================== A PROPOS ==================== -->
+    <section id="apropos" class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title title-serif">À propos de moi</h2>
+                <p class="section-subtitle">Qui suis-je ?</p>
+            </div>
 
-<section>
-    <h2>Valeur</h2>
-    <p><strong>Rigueur et ponctualité</strong></p>
-    <img src="https://example.com/value-image.jpg" alt="Valeur image">
-</section>
+            <div class="about-grid">
+                <div class="about-main">
+                    <p>
+                        Actuellement en Licence Professionnelle à l'ILPES, je me spécialise dans la commercialisation
+                        des produits et services sportifs.
+                        Titulaire d'un Bac STMG, j'ai toujours su que mon avenir se dessinerait dans le monde du sport.
+                        Le golf n'est pas qu'un loisir pour moi, c'est une école de la vie qui m'a appris la patience,
+                        la rigueur et l'humilité.
+                        Sociable et persévérant, je mets mon dynamisme au service de mes projets professionnels.
+                    </p>
 
-<section>
-    <h2>Anecdote</h2>
-    <p>Lors d'une compétition de golf, j'étais dernier et j'avais le pire classement de ma vie. Mais je me suis ressaisi et j'ai fini 20e sur 100. Cette expérience m'a appris à garder mon calme et à me battre jusqu'au bout.</p>
-    <img src="https://example.com/golf-competition.jpg" alt="Golf compétition image">
-</section>
+                    <div class="anecdote-card">
+                        <h4>L'anecdote qui me définit</h4>
+                        <p>
+                            "Lors d’une compétition de golf, j’étais dernier avec le pire score de ma vie.
+                            Au lieu d'abandonner, je me suis ressaisi, coup après coup. J'ai finalement terminé 20e sur
+                            100.
+                            Cette expérience illustre ma capacité à rebondir et à gérer la pression, même dans les
+                            moments difficiles."
+                        </p>
+                    </div>
+                </div>
 
-<section>
-    <h2>Diplôme</h2>
-    <ul>
-        <li>Bac STMG</li>
-        <li>En cours : Licence professionnelle</li>
-    </ul>
-    <img src="https://example.com/diploma-image.jpg" alt="Diplôme image">
-</section>
+                <div class="about-sidebar">
+                    <h3>En bref</h3>
+                    <ul class="info-list">
+                        <li><strong>Âge</strong> 20 ans</li>
+                        <li><strong>Études</strong> Licence Pro ILPES (Commercialisation Sport)</li>
+                        <li><strong>Diplôme</strong> Bac STMG</li>
+                        <li><strong>Ambition</strong> Faire de ma passion du golf un véritable projet professionnel.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section>
-    <h2>Une matière marquante</h2>
-    <p>Le marketing avec M. Chamber à Vauban a particulièrement marqué mon parcours. C'était un professeur compréhensif, passionné et toujours disponible pour aider ses élèves.</p>
-    <img src="https://example.com/marketing-image.jpg" alt="Marketing image">
-</section>
+    <!-- ==================== QUALITES ==================== -->
+    <section id="qualites" class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title title-serif">Mes Qualités</h2>
+                <p class="section-subtitle">Ce que l'on dit de moi</p>
+            </div>
 
-<section>
-    <h2>Expérience Bénévole</h2>
-    <p>J'ai été bénévole dans les clubs de judo et de golf. Au judo, j'étais responsable de l'arbitrage et de la tenue de la table d'arbitrage. Actuellement, je fais partie du bureau de l'association du Golf de Saint-Ouen-l'Aumône et je suis également capitaine de l'équipe de golf.</p>
-    <img src="https://example.com/volunteer-image.jpg" alt="Bénévolat image">
-</section>
+            <div class="qualities-grid">
+                <div class="quality-card">
+                    <h3>Sociable</h3>
+                    <p class="quality-text">
+                        "Clément crée facilement du lien. Que ce soit avec les clients, les élèves ou ses collègues, il
+                        sait instaurer une ambiance de travail positive et conviviale."
+                    </p>
+                    <span class="quality-source">- Edward-Auguste Piguet</span>
+                </div>
 
-<section>
-    <h2>Expérience Professionnelle</h2>
-    <ul>
-        <li>Stage au Golf de Saint-Ouen-l’Aumône (actuellement en alternance)</li>
-        <li>Stage au Golf du Racing Club de France, La Boulie</li>
-    </ul>
-    <p>Ces expériences m'ont permis de développer mes compétences en relation client, autonomie, commerce et comptabilité.</p>
-    <img src="https://example.com/professional-experience.jpg" alt="Expérience professionnelle image">
-</section>
+                <div class="quality-card">
+                    <h3>Persévérant</h3>
+                    <p class="quality-text">
+                        "Il ne lâche rien. Comme sur le parcours de golf, même après un mauvais départ, il sait se
+                        remobiliser pour atteindre ses objectifs."
+                    </p>
+                    <span class="quality-source">- Tiger Woods</span>
+                </div>
 
-<section>
-    <h2>Mes Compétences</h2>
-    <div class="skills">
-        <div><strong>Organisation</strong></div>
-        <div><strong>Relationnel</strong></div>
-        <div><strong>Commerce</strong></div>
-        <div><strong>Travail d’équipe</strong></div>
-    </div>
-    <img src="https://example.com/skills-image.jpg" alt="Compétences image">
-</section>
+                <div class="quality-card">
+                    <h3>Dynamique</h3>
+                    <p class="quality-text">
+                        "Une énergie communicative ! Il est toujours prêt à apprendre, à se dépasser et à proposer de
+                        nouvelles idées pour avancer."
+                    </p>
+                    <span class="quality-source">- Ma mère</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section>
-    <h2>Outils et Logiciels</h2>
-    <ul>
-        <li>Réseaux sociaux : Instagram, TikTok, LinkedIn</li>
-        <li>Suite Microsoft : PowerPoint, Publisher, Word</li>
-    </ul>
-    <img src="https://example.com/tools-image.jpg" alt="Outils et logiciels image">
-</section>
+    <!-- ==================== VALEURS ==================== -->
+    <section id="valeurs" class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title title-serif">Mes Valeurs</h2>
+                <p class="section-subtitle">Ce qui guide ma manière de travailler</p>
+            </div>
 
-<section>
-    <h2>Réalisations</h2>
-    <p>Je suis fier de recevoir des compliments des clients pour mes qualités de professeur et vendeur. J'ai également gagné la confiance de mon club pour le rôle de capitaine.</p>
-    <p>J'ai créé un document pour suivre les améliorations des personnes qui prennent des cours de golf avec moi.</p>
-    <img src="https://example.com/realizations-image.jpg" alt="Réalisations image">
-</section>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🎯</div>
+                    <h3>Rigueur & Ponctualité</h3>
+                    <p>
+                        Je prends mes engagements au sérieux : respect des horaires, préparation minutieuse des séances
+                        de cours et suivi rigoureux des dossiers clients.
+                    </p>
+                </div>
 
-<section>
-    <h2>Objectifs Professionnels</h2>
-    <p>Mon prochain challenge est de créer ma propre boutique de golf ou bien mon propre golf dans les 10-15 prochaines années.</p>
-    <p>Mon job de rêve dans 30 ans serait d'enseigner le golf tout en étant rentier grâce à plusieurs investissements immobiliers.</p>
-    <img src="https://example.com/objectives-image.jpg" alt="Objectifs image">
-</section>
+                <div class="value-card">
+                    <div class="value-icon">🧠</div>
+                    <h3>Gestion des émotions</h3>
+                    <p>
+                        Savoir rester calme et lucide est essentiel. En compétition comme face à un client, je garde la
+                        tête froide pour prendre les bonnes décisions.
+                    </p>
+                </div>
 
-<section>
-    <h2>Centres d’Intérêt</h2>
-    <div class="interests">
-        <div><strong>Sports</strong>: Golf, Judo, Football, Football américain</div>
-        <div><strong>Voyages</strong></div>
-        <div><strong>Musique</strong></div>
-        <div><strong>Voitures</strong></div>
-        <div><strong>Montres</strong></div>
-    </div>
-    <img src="https://example.com/interests-image.jpg" alt="Centres d'intérêts image">
-</section>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Investissement</h3>
+                    <p>
+                        Je veux que l'on se souvienne de moi comme d'une personne investie. Je me mets au service du
+                        client et de l'équipe avec un sens aigu du service.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section>
-    <h2>Ce que j’aimerais que les recruteurs retiennent</h2>
-    <p>J'aimerais que les recruteurs retiennent que je suis un bon commerçant, une personne investie et capable de gérer mes émotions. Si un recruteur me contacte, j'aimerais commencer l'entretien dans une ambiance détendue avec une blague pour décontracter l'atmosphère.</p>
-    <img src="https://example.com/recruitment-image.jpg" alt="Recrutement image">
-</section>
+    <!-- ==================== PARCOURS ==================== -->
+    <section id="parcours" class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title title-serif" style="margin-bottom: 60px;">Mon Parcours</h2>
+            </div>
 
-<section class="quote">
-    <p>"On a toujours besoin d’un plus petit que soi."</p>
-</section>
+            <div class="parcours-container">
+                <div class="parcours-col">
+                    <h3>Associatif & Bénévolat</h3>
 
+                    <div class="exp-card">
+                        <h4>Membre du Bureau & Capitaine d'équipe</h4>
+                        <span class="place">Golf de Saint-Ouen-l’Aumône</span>
+                        <p>Gestion d'équipe, organisation d'événements et participation active à la vie du club.</p>
+                    </div>
+
+                    <div class="exp-card">
+                        <h4>Bénévole & Arbitrage</h4>
+                        <span class="place">Club de Judo</span>
+                        <p>Arbitrage des compétitions, tenue des tables de marque. Apprentissage de la gestion du stress
+                            et de la prise de décision rapide.</p>
+                    </div>
+                </div>
+
+                <div class="parcours-col">
+                    <h3>Expériences Pro</h3>
+
+                    <div class="exp-card">
+                        <h4>Alternance & Stage</h4>
+                        <span class="place">Golf de Saint-Ouen-l’Aumône</span>
+                        <p>Relation client, vente, gestion administrative et comptabilité de base. Développement de
+                            l'autonomie.</p>
+                    </div>
+
+                    <div class="exp-card">
+                        <h4>Stage</h4>
+                        <span class="place">Golf du Racing Club de France – La Boulie</span>
+                        <p>Découverte d'un environnement prestigieux, excellence du service et organisation.</p>
+                    </div>
+                </div>
+
+                <div class="realisation-card">
+                    <div class="realisation-icon">📈</div>
+                    <div class="realisation-content">
+                        <h4>Mes Réalisations</h4>
+                        <p>
+                            J'ai mis en place un <strong>document de suivi des élèves</strong> pour noter les progrès
+                            techniques et les axes d'amélioration.
+                            Mes clients soulignent régulièrement mes qualités de pédagogue et mon approche commerciale
+                            bienveillante.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== COMPETENCES ==================== -->
+    <section id="competences" class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title title-serif">Mes Compétences</h2>
+                <p class="section-subtitle">Savoir-faire & Savoir-être</p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-icon">💼</div>
+                    <h3>Relationnel & Commercial</h3>
+                    <ul class="skill-list">
+                        <li>Relation client & Vente</li>
+                        <li>Travail d'équipe</li>
+                        <li>Organisation & Rigueur</li>
+                        <li>Gestion des émotions</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-icon">💻</div>
+                    <h3>Digital & Bureautique</h3>
+                    <ul class="skill-list">
+                        <li>Réseaux Sociaux (Instagram, TikTok, LinkedIn)</li>
+                        <li>Pack Office (Word, PowerPoint)</li>
+                        <li>Publisher</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-icon">⛳</div>
+                    <h3>Terrain & Sport</h3>
+                    <ul class="skill-list">
+                        <li>Pédagogie (Enseignement du golf)</li>
+                        <li>Encadrement de jeunes</li>
+                        <li>Arbitrage (Judo)</li>
+                        <li>Responsabilité & Sécurité</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PASSIONS ==================== -->
+    <section id="passions" class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title title-serif">Mes Passions</h2>
+                <p class="section-subtitle">Ce qui nourrit mon quotidien</p>
+            </div>
+
+            <div class="passions-grid">
+                <div class="passion-card highlight">
+                    <img src="/passion/golf.jpg" alt="Golf" class="passion-img">
+                    <div class="passion-overlay">
+                        <div class="passion-title">Le Golf</div>
+                    </div>
+                </div>
+
+                <div class="passion-card">
+                    <img src="/passion/judo.webp" alt="Judo" class="passion-img">
+                    <div class="passion-overlay">
+                        <div class="passion-title">Le Judo</div>
+                    </div>
+                </div>
+
+                <div class="passion-card">
+                    <img src="/passion/foot.jpg" alt="Football" class="passion-img">
+                    <div class="passion-overlay">
+                        <div class="passion-title">Le Football</div>
+                    </div>
+                </div>
+
+                <div class="passion-card">
+                    <img src="/passion/footus.png" alt="Foot US" class="passion-img">
+                    <div class="passion-overlay">
+                        <div class="passion-title">Football Américain</div>
+                    </div>
+                </div>
+
+                <div class="passion-card">
+                    <img src="/passion/trip.JPG" alt="Voyages" class="passion-img">
+                    <div class="passion-overlay">
+                        <div class="passion-title">Les Voyages</div>
+                    </div>
+                </div>
+
+                <div class="passion-card">
+                    <img src="/passion/montres.jpg" alt="Musique" class="passion-img">
+                    <div class="passion-overlay">
+                        <div class="passion-title">Les Montres</div>
+                    </div>
+                </div>
+
+                <div class="passion-card">
+                    <img src="/passion/voiture.jpg" alt="Voitures" class="passion-img">
+                    <div class="passion-overlay">
+                        <div class="passion-title">Les Voitures</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== OBJECTIFS ==================== -->
+    <section id="objectifs" class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title title-serif">Mes Objectifs</h2>
+                <p class="section-subtitle">Ma vision pour l'avenir</p>
+            </div>
+
+            <div class="objectives-grid">
+                <div class="obj-card">
+                    <h3>Court Terme</h3>
+                    <ul>
+                        <li>Trouver un emploi dans le commerce, l'enseignement ou la finance.</li>
+                        <li>Développer mes compétences en <strong>management d'équipe</strong>.</li>
+                    </ul>
+                </div>
+
+                <div class="obj-card">
+                    <h3>10 - 15 ans</h3>
+                    <ul>
+                        <li>Ouvrir ma propre <strong>boutique de golf</strong>.</li>
+                        <li>Ou gérer mon propre golf.</li>
+                        <li>Devenir une référence dans le milieu.</li>
+                    </ul>
+                </div>
+
+                <div class="obj-card">
+                    <h3>Vision à 30 ans</h3>
+                    <ul>
+                        <li>Enseigner le golf (Job de rêve).</li>
+                        <li>Atteindre l'indépendance financière grâce à l'investissement immobilier.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="inspiration-block">
+                <div class="batman-symbol">🦇</div>
+                <p class="inspiration-quote">"On a toujours besoin d’un plus petit que soi."</p>
+                <p>
+                    Ce symbole représente pour moi la force tranquille, la vigilance et la protection.
+                    Il me rappelle l'importance de veiller sur les autres et de rester humble.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title title-serif" style="color: white;">Contactez <span
+                        class="text-accent">Moi</span>
+                </h2>
+            </div>
+
+            <div class="contact-infos">
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h3>Téléphone</h3>
+                    <p>06 84 63 47 13</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <p>cl.malgonne@gmail.com</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>Localisation</h3>
+                    <p>ILEPS, France</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">💼</div>
+                    <h3>LinkedIn</h3>
+                    <p>
+                        <a href="https://www.linkedin.com/in/cl%C3%A9ment-malgonne-673051295/" target="_blank">Voir mon
+                            profil</a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Clément Malgonne – Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- ==================== SCRIPT ==================== -->
+    <script>
+        // Mobile Navigation Toggle
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('.nav-links');
+        const navLinks = document.querySelectorAll('.nav-links li');
+
+        burger.addEventListener('click', () => {
+            nav.classList.toggle('nav-active');
+            burger.classList.toggle('toggle');
+        });
+
+        // Close mobile menu when clicking a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (nav.classList.contains('nav-active')) {
+                    nav.classList.remove('nav-active');
+                    burger.classList.remove('toggle');
+                }
+            });
+        });
+
+        // Form Submission Handling
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Merci ! Votre message a bien été envoyé (Simulation).');
+            contactForm.reset();
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.8)';
+            } else {
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.5)';
+            }
+        });
+    </script>
 </body>
+
 </html>
